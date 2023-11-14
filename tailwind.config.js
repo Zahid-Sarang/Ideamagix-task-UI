@@ -12,6 +12,9 @@ module.exports = {
 				"secondary-btn": "#DB2677",
 				"follow-btn": "#324150",
 			},
+			screens: {
+				"3xl": "2000px",
+			},
 		},
 	},
 	plugins: [],

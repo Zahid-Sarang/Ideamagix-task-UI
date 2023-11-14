@@ -1,18 +1,19 @@
 import React from "react";
-
+import { setAuth } from "../store/authSlice";
 /* REACT ROUTER IMPORT */
 import { Link } from "react-router-dom";
 
 /* API IMPORTS */
+import { registerUser } from "../api";
 
 /* LIBRARIES IMPORTS */
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registerUser } from "../api";
-
+import { useDispatch } from "react-redux";
 /*COMPONENT */
 const SignUp = () => {
+	const dispatch = useDispatch();
 	const {
 		register,
 		handleSubmit,
@@ -25,7 +26,7 @@ const SignUp = () => {
 		try {
 			const { userName, email, password } = userdata;
 			const { data } = await registerUser({ userName, email, password });
-			console.log(data);
+			dispatch(setAuth(data));
 			reset();
 			toast.success("Registration Successful!");
 		} catch (err) {

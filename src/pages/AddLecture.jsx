@@ -1,22 +1,19 @@
 import React from "react";
-import { setAuth } from "../store/authSlice";
 /* REACT ROUTER IMPORT */
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 /* API IMPORTS */
-import { loginUser } from "../api";
 
 /* LIBRARIES IMPORTS */
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
+import { addLecture } from "../api";
 
 /* REDUX & STATE IMPORTS */
 
 /*COMPONENT */
 const SignIn = () => {
-	const dispatch = useDispatch();
 	const Navigate = useNavigate();
 	const {
 		register,
@@ -28,18 +25,18 @@ const SignIn = () => {
 	// Login user
 	async function onSubmitFormData(userdata) {
 		try {
-			const { data } = await loginUser(userdata);
-
-			dispatch(setAuth(data));
+			const response = await addLecture(userdata);
+			console.log(response.data);
 
 			// Reset the form fields after a successful submission:
 			reset();
 			// Display success message:
-			toast.success("Login Successful!");
+			toast.success("Lecture Added SuccessFully!");
 			Navigate("/home");
 		} catch (apiError) {
+			toast.error(apiError.response.data.errors[0].msg);
 			// If the error response has a message, display it. Otherwise, show a generic error.
-			console.log(apiError);
+			console.log(apiError.response.data.errors[0].msg);
 			if (
 				apiError.response &&
 				apiError.response.data &&
@@ -47,7 +44,7 @@ const SignIn = () => {
 			) {
 				toast.error(apiError.response.data.message);
 			} else {
-				toast.error("Login failed! Please try again.");
+				toast.error("failed to add lecture");
 			}
 		}
 	}
@@ -76,37 +73,52 @@ const SignIn = () => {
 				<div className="mb-4">
 					<label
 						className="block mb-2 text-sm font-bold text-primary"
-						htmlFor="email"
+						htmlFor="date"
 					>
-						Email
+						Date
 					</label>
 					<input
-						{...register("email", { required: "Email is required" })}
+						{...register("date", { required: "date is required" })}
 						className="w-full px-3 py-2 leading-tight rounded shadow appearance-none bg-follow-btn text-primary focus:outline-none focus:shadow-outline"
-						id="email"
-						type="email"
-						name="email"
+						id="date"
+						type="date"
+						name="date"
 					/>
 				</div>
+
 				<div className="mb-4">
 					<label
 						className="block mb-2 text-sm font-bold text-primary"
-						htmlFor="password"
+						htmlFor="date"
 					>
-						Password
+						Instructor
 					</label>
 					<input
-						{...register("password", {
-							required: "Password is required",
-							pattern: {
-								value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
-								message: "Enter a 8 character password",
-							},
+						{...register("instructor", {
+							required: "instructor ID is required",
 						})}
 						className="w-full px-3 py-2 leading-tight rounded shadow appearance-none bg-follow-btn text-primary focus:outline-none focus:shadow-outline"
-						id="password"
-						type="password"
-						name="password"
+						id="instructor"
+						type="text"
+						name="instructor"
+						placeholder="please enter Instructor Id"
+					/>
+				</div>
+
+				<div className="mb-4">
+					<label
+						className="block mb-2 text-sm font-bold text-primary"
+						htmlFor="date"
+					>
+						Course
+					</label>
+					<input
+						{...register("course", { required: "course ID is required" })}
+						className="w-full px-3 py-2 leading-tight rounded shadow appearance-none bg-follow-btn text-primary focus:outline-none focus:shadow-outline"
+						id="course"
+						type="text"
+						name="course"
+						placeholder="Please enter a course Id "
 					/>
 				</div>
 
@@ -115,12 +127,8 @@ const SignIn = () => {
 						className="px-4 py-2 font-bold rounded bg-secondary-btn hover:bg-primary-btn text-primary-btn hover:text-secondary-btn focus:outline-none focus:shadow-outline"
 						type="submit"
 					>
-						Login
+						Submit
 					</button>
-					<Link to="/signUp" className="text-sm text-secondary-btn">
-						{" "}
-						Don't have any account? SignUp
-					</Link>
 				</div>
 			</form>
 		</div>

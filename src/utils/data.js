@@ -13,7 +13,13 @@ export const NavLinkProperties = [
 	{
 		id: 2,
 		url: "/create",
-		title: "AddCourse",
+		title: "Add Course",
+		icon: <AddCircleOutlineRoundedIcon style={{ fontSize: "1.75rem" }} />,
+	},
+	{
+		id: 3,
+		url: "/addLecture",
+		title: "Add Lecture",
 		icon: <AddCircleOutlineRoundedIcon style={{ fontSize: "1.75rem" }} />,
 	},
 	{
