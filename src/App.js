@@ -1,10 +1,29 @@
-import "./App.css";
-
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthRedirect } from "./protectedRoutes/protectedRoutes";
+import RegisterPages from "./pages/RegisterPage";
 function App() {
 	return (
-		<h1 className="text-3xl font-bold underline text-[#363062]">
-			Hello world!
-		</h1>
+		<BrowserRouter>
+			<Routes>
+				{/* Routes for authenticated users */}
+
+				{/* <Route element={<Layout />}>
+					<Route path="/" element={<Navigate to="/home" replace />}></Route>
+					<Route path="/home" element={<ProtectedRoute component={Home} />} /> */}
+				{/* <Route
+						path="/profile"
+						element={<ProtectedRoute component={ProfilePage} />}
+					/> */}
+				{/* </Route> */}
+
+				{/* routes for unauthenticated users */}
+				{/* <Route path="/signin" element={<AuthRedirect component={SignIn} />} /> */}
+				<Route
+					path="/signup"
+					element={<AuthRedirect component={RegisterPages} />}
+				/>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

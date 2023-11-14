@@ -4,12 +4,13 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				"background-color": "#F2EFE5",
-				"primary-text": "#020100",
-				"Active-text": "#56Ab69",
-				secondary: "#6c695f",
-				"secondary-text": "#838078",
-				"card-color": "#E6E3D8",
+				primary: "#fff",
+				secondary: "#ffffffb2",
+				theme: "#0F172A",
+				"sidebar-bg": "#1E293B",
+				"primary-btn": "#FCE7F3",
+				"secondary-btn": "#DB2677",
+				"follow-btn": "#324150",
 			},
 		},
 	},
