@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthRedirect } from "./protectedRoutes/protectedRoutes";
 import RegisterPages from "./pages/RegisterPage";
+import LoginPage from "./pages/LoginPage";
 function App() {
 	return (
 		<BrowserRouter>
@@ -17,7 +18,10 @@ function App() {
 				{/* </Route> */}
 
 				{/* routes for unauthenticated users */}
-				{/* <Route path="/signin" element={<AuthRedirect component={SignIn} />} /> */}
+				<Route
+					path="/signin"
+					element={<AuthRedirect component={LoginPage} />}
+				/>
 				<Route
 					path="/signup"
 					element={<AuthRedirect component={RegisterPages} />}
