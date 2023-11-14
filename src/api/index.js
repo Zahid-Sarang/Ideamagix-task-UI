@@ -19,6 +19,7 @@ export const registerUser = (data) => api.post("/api/auth/register", data);
 export const loginUser = (data) => api.post("/api/auth/login", data);
 export const instructorList = () => api.get("/api/auth/getUsers");
 export const addLecture = (data) => api.post("/api/lectures", data);
+export const lectureListapi = () => api.get("/api/lectures");
 export const courseList = () => api.get("/api/courses");
 export const createCourse = (data) =>
 	api.post("/api/courses", data, {

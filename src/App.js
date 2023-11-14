@@ -11,6 +11,7 @@ import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefreshToken";
 import Instructor from "./pages/Instructor";
 import CreateCourse from "./pages/CreateCourse";
 import AddLecture from "./pages/AddLecture";
+import LectureLists from "./components/LecturesList";
 function App() {
 	// call refresh endpoint
 	const { loading } = useLoadingWithRefresh();

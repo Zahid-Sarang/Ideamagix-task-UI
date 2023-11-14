@@ -17,8 +17,8 @@ const CourseList = () => {
 			}
 		}
 		userList();
-	});
-
+	}, []);
+	console.log(courseData);
 	return (
 		<div className="flex flex-col items-center justify-center  mx-[15px]">
 			<h1 className="my-10 text-xl font-bold">Course List</h1>

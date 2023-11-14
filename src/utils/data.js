@@ -1,5 +1,6 @@
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
+import ExploreRoundedIcon from "@mui/icons-material/ExploreRounded";
 import PermIdentityRoundedIcon from "@mui/icons-material/PermIdentityRounded";
 
 export const NavLinkProperties = [
@@ -20,7 +21,7 @@ export const NavLinkProperties = [
 		id: 3,
 		url: "/addLecture",
 		title: "Add Lecture",
-		icon: <AddCircleOutlineRoundedIcon style={{ fontSize: "1.75rem" }} />,
+		icon: <ExploreRoundedIcon style={{ fontSize: "1.75rem" }} />,
 	},
 	{
 		id: 3,
